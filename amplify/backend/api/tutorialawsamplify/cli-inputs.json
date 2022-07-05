@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "tutorialawsamplify",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/Users/lizkaufman/Projects/personal/personal-development-coding/tutorial_aws-amplify/amplify/backend/api/tutorialawsamplify/schema.graphql",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 7
+    }
+  }
+}
