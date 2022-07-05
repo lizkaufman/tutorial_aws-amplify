@@ -3,13 +3,14 @@ import React, { useEffect, useState } from "react";
 import { Amplify, API, graphqlOperation } from "aws-amplify";
 import { createTodo } from "../../graphql/mutations";
 import { listTodos } from "../../graphql/queries";
-
 import awsExports from "../../aws-exports";
+import { withAuthenticator, Button, Heading } from "@aws-amplify/ui-react";
+import "@aws-amplify/ui-react/styles.css";
 Amplify.configure(awsExports);
 
 const initialState = { name: "", description: "" };
 
-const App = () => {
+const App = ({ signOut, user }) => {
   const [formState, setFormState] = useState(initialState);
   const [todos, setTodos] = useState([]);
 
@@ -67,6 +68,8 @@ const App = () => {
           <p style={styles.todoDescription}>{todo.description}</p>
         </div>
       ))}
+      <Heading level={1}>Hello {user.username}</Heading>
+      <Button onClick={signOut}>Sign out</Button>
     </div>
   );
 };
@@ -99,4 +102,4 @@ const styles = {
   },
 };
 
-export default App;
+export default withAuthenticator(App);
